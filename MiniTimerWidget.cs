@@ -9,7 +9,9 @@ namespace MiniTimerWidget
     public static string DefinitionId { get; } = "MiniTimer_Widget";
     private static string WidgetTemplate { get; set; } = "";
     private Timer? _timer;
-    private int _remainingSeconds = 5 * 60;
+    private const int InitialTimerMinutes = 15;
+    private const int InitialTimerSeconds = InitialTimerMinutes * 60;
+    private int _remainingSeconds = InitialTimerSeconds;
     private string _timerState = "stopped"; // "stopped", "running", "paused"
 
     private static void Log(string message)
@@ -160,7 +162,7 @@ namespace MiniTimerWidget
     {
       Log("StopTimer called");
       _timerState = "stopped";
-      _remainingSeconds = 15 * 60;
+      _remainingSeconds = InitialTimerSeconds;
       _timer?.Dispose();
       _timer = null;
       UpdateWidget();
