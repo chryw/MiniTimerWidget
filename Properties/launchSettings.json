@@ -1,0 +1,20 @@
+{
+  "profiles": {
+    "Provider on launch": {
+      "commandName": "MsixPackage",
+      "commandLineArgs": "-RegisterProcessAsComServer",
+      "doNotLaunchApp": true,
+      "nativeDebugging": true,
+      "alwaysReinstallApp": true
+    },
+    "UI App": {
+      "commandName": "MsixPackage",
+      "nativeDebugging": true
+    },
+    "Provider": {
+      "commandName": "MsixPackage",
+      "commandLineArgs": "-RegisterProcessAsComServer",
+      "nativeDebugging": true
+    }
+  }
+}

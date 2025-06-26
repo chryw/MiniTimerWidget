@@ -1,0 +1,51 @@
+{
+  "type": "AdaptiveCard",
+  "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "Container",
+      "verticalContentAlignment": "Center",
+      "height": "stretch",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "${time}",
+          "horizontalAlignment": "Center",
+          "size": "ExtraLarge",
+          "weight": "Bolder",
+          "color": "Default"
+        },
+        {
+          "type": "ActionSet",
+          "actions": [
+            {
+              "type": "Action.Execute",
+              "title": "Start",
+              "id": "startTimer",
+              "style": "positive",
+              "isEnabled": "${state == 'stopped' || state == 'paused'}",
+              "data": { "id": "startTimer" }
+            },
+            {
+              "type": "Action.Execute",
+              "title": "Pause",
+              "id": "pauseTimer",
+              "isEnabled": "${state == 'running'}",
+              "data": { "id": "pauseTimer" }
+            },
+            {
+              "type": "Action.Execute",
+              "title": "Stop",
+              "id": "stopTimer",
+              "style": "destructive",
+              "isEnabled": "${state == 'running'}",
+              "data": { "id": "stopTimer" }
+            }
+          ],
+          "horizontalAlignment": "Center"
+        }
+      ]
+    }
+  ]
+}

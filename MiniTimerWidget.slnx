@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="MiniTimerWidget.csproj">
+    <Platform Project="x64" />
+  </Project>
+  <Project Path="WidgetHelper/WidgetHelper.shproj" Id="6488771c-7459-4dfe-b37a-e430ec0788c6" />
+</Solution>
