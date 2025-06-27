@@ -82,7 +82,7 @@ namespace MiniTimerWidget
           // Format as mm:ss
           timeStr = $"{ts.Minutes:D2}:{ts.Seconds:D2}";
         }
-        var data = JsonSerializer.Serialize(new { time = timeStr, state = _timerState });
+        var data = JsonSerializer.Serialize(new { time = timeStr, state = _timerState, unit = "min" });
         Log($"GetDataForWidget: {data}");
         return data;
       }
@@ -90,7 +90,7 @@ namespace MiniTimerWidget
       {
         Log($"GetDataForWidget Exception: {ex.Message}");
         // Fallback to a safe default
-        return JsonSerializer.Serialize(new { time = "5:00", state = "stopped" });
+        return JsonSerializer.Serialize(new { time = "5:00", state = "stopped", unit = "min" });
       }
     }
 

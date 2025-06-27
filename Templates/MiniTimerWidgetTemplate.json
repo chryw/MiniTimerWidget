@@ -10,93 +10,81 @@
       "items": [
         {
           "type": "ColumnSet",
+          "horizontalAlignment": "Center",
+          "columns": [
+            {
+              "type": "Column",
+              "spacing": "Medium",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "${time}",
+                  "size": "ExtraLarge"
+                }
+              ],
+              "verticalContentAlignment": "Bottom",
+              "width": "auto"
+            },
+            {
+              "type": "Column",
+              "spacing": "Medium",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "${unit}"
+                }
+              ],
+              "verticalContentAlignment": "Bottom",
+              "width": "auto"
+            }
+          ]
+        },
+        {
+          "type": "ColumnSet",
+          "horizontalAlignment": "Center",
           "columns": [
             {
               "type": "Column",
               "items": [
                 {
-                  "type": "TextBlock",
-                  "text": "${time}",
-                  "horizontalAlignment": "Center",
-                  "size": "ExtraLarge",
-                  "weight": "Bolder",
-                  "color": "Default"
+                  "type": "ActionSet",
+                  "actions": [
+                    {
+                      "type": "Action.Execute",
+                      "title": "Start",
+                      "id": "startTimer",
+                      "style": "positive",
+                      "$when": "${state == 'stopped'}",
+                      "data": { "id": "startTimer" }
+                    },
+                    {
+                      "type": "Action.Execute",
+                      "title": "Pause",
+                      "id": "pauseTimer",
+                      "$when": "${state == 'running'}",
+                      "data": { "id": "pauseTimer" }
+                    },
+                    {
+                      "type": "Action.Execute",
+                      "title": "Continue",
+                      "id": "continueTimer",
+                      "$when": "${state == 'paused'}",
+                      "data": { "id": "startTimer" }
+                    },
+                    {
+                      "type": "Action.Execute",
+                      "title": "Stop",
+                      "id": "stopTimerPaused",
+                      "$when": "${state != 'stopped'}",
+                      "data": { "id": "stopTimer" }
+                    }
+                  ],
+                  "horizontalAlignment": "Center"
                 }
               ],
-              "verticalContentAlignment": "Center",
-              "width": "auto"
-            },
-            {
-              "type": "Column",
-              "items": [
-                {
-                  "type": "TextBlock",
-                  "text": "min"
-                }
-              ],
-              "verticalContentAlignment": "Center",
               "width": "auto"
             }
-          ],
-          "horizontalAlignment": "Center"
-        },
-        {
-          "type": "ActionSet",
-          "actions": [
-            {
-              "type": "Action.Execute",
-              "title": "Start",
-              "id": "startTimer",
-              "style": "positive",
-              "$when": "${state == 'stopped'}",
-              "isEnabled": true,
-              "data": { "id": "startTimer" }
-            },
-            {
-              "type": "Action.Execute",
-              "title": "Stop",
-              "id": "stopTimer",
-              "style": "destructive",
-              "$when": "${state == 'stopped'}",
-              "isEnabled": false,
-              "data": { "id": "stopTimer" }
-            },
-            {
-              "type": "Action.Execute",
-              "title": "Pause",
-              "id": "pauseTimer",
-              "$when": "${state == 'running'}",
-              "isEnabled": true,
-              "data": { "id": "pauseTimer" }
-            },
-            {
-              "type": "Action.Execute",
-              "title": "Stop",
-              "id": "stopTimerRunning",
-              "style": "destructive",
-              "$when": "${state == 'running'}",
-              "isEnabled": true,
-              "data": { "id": "stopTimer" }
-            },
-            {
-              "type": "Action.Execute",
-              "title": "Continue",
-              "id": "continueTimer",
-              "$when": "${state == 'paused'}",
-              "isEnabled": true,
-              "data": { "id": "startTimer" }
-            },
-            {
-              "type": "Action.Execute",
-              "title": "Stop",
-              "id": "stopTimerPaused",
-              "style": "destructive",
-              "$when": "${state == 'paused'}",
-              "isEnabled": true,
-              "data": { "id": "stopTimer" }
-            }
-          ],
-          "horizontalAlignment": "Center"
+          ]
         }
       ]
     }
